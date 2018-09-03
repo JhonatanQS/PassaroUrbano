@@ -21,9 +21,10 @@ constructor(private http:Http){}
         .toPromise()
         .then((resposta:any)=>resposta.json())
     }
-    public getOfertaPorId(id:string) : Promise<Oferta>{
+
+    public getOfertaPorId(id:number) : Promise<Oferta>{
         return this.http.get(`${URL_API}?id=${id}`)
         .toPromise()
-        .then((resposta:any)=>resposta.json()[0])
+        .then((resposta:any)=>resposta.json().shift())
     }
 }
